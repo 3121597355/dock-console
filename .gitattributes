@@ -1,0 +1,7 @@
+# normalise line endings so the repo behaves the same on every platform;
+# the Windows launchers and PowerShell keep CRLF because they need it
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary

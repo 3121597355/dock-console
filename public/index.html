@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dock Console</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<svg class="sprite" aria-hidden="true">
+  <symbol id="ic-laptop" viewBox="0 0 16 16"><rect x="2.5" y="3.5" width="11" height="7.5" rx="1"/><path d="M1 13h14"/></symbol>
+  <symbol id="ic-dock" viewBox="0 0 16 16"><rect x="2" y="6" width="12" height="5" rx="1.5"/><path d="M4.5 6V4h2v2M9.5 6V4h2v2"/><circle cx="5" cy="8.7" r=".6"/><circle cx="7.5" cy="8.7" r=".6"/><circle cx="10" cy="8.7" r=".6"/></symbol>
+  <symbol id="ic-disk" viewBox="0 0 16 16"><rect x="2.5" y="2.5" width="11" height="11" rx="2"/><circle cx="8" cy="8" r="2.6"/><path d="M8 5.7v1.2"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 16 16"><rect x="4.5" y="1.8" width="7" height="12.4" rx="1.6"/><path d="M6.8 13.2h2.4"/></symbol>
+  <symbol id="ic-keyboard" viewBox="0 0 16 16"><rect x="1.5" y="4.5" width="13" height="7" rx="1.5"/><path d="M4 6.6h.01M6.4 6.6h.01M8.8 6.6h.01M11.2 6.6h.01M5 9.4h6"/></symbol>
+  <symbol id="ic-mouse" viewBox="0 0 16 16"><rect x="5" y="1.8" width="6" height="12.4" rx="3"/><path d="M8 4.2v2"/></symbol>
+  <symbol id="ic-gamepad" viewBox="0 0 16 16"><path d="M4.6 5h6.8a3 3 0 0 1 2.9 3.6l-.5 2.6a2 2 0 0 1-3.4 1L9.2 11H6.8l-1.2 1.2a2 2 0 0 1-3.4-1l-.5-2.6A3 3 0 0 1 4.6 5Z"/><path d="M5.4 8h1.6M6.2 7.2v1.6M10.4 8h.01"/></symbol>
+  <symbol id="ic-camera" viewBox="0 0 16 16"><rect x="1.8" y="4.5" width="9.4" height="7" rx="1.6"/><path d="M11.2 7.4 14.2 6v4l-3-1.4"/></symbol>
+  <symbol id="ic-net" viewBox="0 0 16 16"><rect x="2" y="9" width="12" height="4.5" rx="1"/><path d="M5 9V6.5M8 9V4M11 9V6.5"/></symbol>
+  <symbol id="ic-hub" viewBox="0 0 16 16"><rect x="6" y="6" width="4" height="4" rx=".8"/><path d="M8 6V2.5M8 13.5V10M2.5 8h3.5M10 8h3.5"/></symbol>
+  <symbol id="ic-video" viewBox="0 0 16 16"><rect x="1.8" y="3.5" width="12.4" height="8" rx="1.4"/><path d="M5.5 13.5h5"/></symbol>
+  <symbol id="ic-power" viewBox="0 0 16 16"><path d="M8.6 1.8 4 9h3.4l-.6 5.2L11.6 7H8.2l.4-5.2Z"/></symbol>
+  <symbol id="ic-chip" viewBox="0 0 16 16"><rect x="4.5" y="4.5" width="7" height="7" rx="1"/><path d="M6.5 2v2.5M9.5 2v2.5M6.5 11.5V14M9.5 11.5V14M2 6.5h2.5M2 9.5h2.5M11.5 6.5H14M11.5 9.5H14"/></symbol>
+  <symbol id="ic-usb" viewBox="0 0 16 16"><path d="M8 1.6v12.8"/><path d="M8 4.6 5.8 7.4M8 4.6l2.2 2.8"/><circle cx="8" cy="13.6" r="1"/><rect x="7.3" y="1.6" width="1.4" height="1.4" rx=".3"/></symbol>
+  <symbol id="ic-alert" viewBox="0 0 16 16"><path d="M8 2.5 14.5 13.5h-13L8 2.5Z"/><path d="M8 6.5v3.2M8 11.6h.01"/></symbol>
+  <symbol id="ic-ok" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6"/><path d="M5.4 8.2 7.2 10l3.4-3.6"/></symbol>
+  <symbol id="ic-sd" viewBox="0 0 16 16"><path d="M4 2.5h5.5L13 6v7.5H4z"/><path d="M6 5.2v1.4M7.8 5.2v1.4M9.6 5.2v1.4"/></symbol>
+  <symbol id="ic-audio" viewBox="0 0 16 16"><path d="M3 6.5v3h2L9 13V3L5 6.5H3Z"/><path d="M11.4 6a3 3 0 0 1 0 4"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="mark">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="18" height="7" rx="2.2" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M7 9V6h2.6v3M14.4 9V6H17v3" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/><circle cx="7.6" cy="12.6" r=".9" fill="currentColor"/><circle cx="10.4" cy="12.6" r=".9" fill="currentColor"/><circle cx="13.2" cy="12.6" r=".9" fill="currentColor"/></svg>
+    </div>
+    <div class="brand-txt">
+      <div class="brand-title">DOCK CONSOLE</div>
+      <div class="brand-sub" id="brandSub" data-i18n="brand.sub"></div>
+    </div>
+  </div>
+
+  <div class="topbar-right">
+    <div class="srcline" id="srcline"><span class="dot"></span><span id="srcTxt"></span></div>
+    <div class="live" id="livePill"><span class="pulse"></span>LIVE <b>1</b> Hz</div>
+    <button class="langbtn" id="langBtn" data-i18n-title="lang.title"></button>
+    <div class="clock" id="clock">--:--:--</div>
+  </div>
+</header>
+
+<div class="offline" id="offline" data-i18n="offline"></div>
+
+<main class="wrap">
+  <section class="kpis" id="kpis">
+    <article class="kpi kpi-power">
+      <div class="kpi-label"><span data-i18n="kpi.power"></span> <span class="tag est" id="powerTag" data-i18n-title="power.tag.title"></span></div>
+      <div class="kpi-val"><span class="num" id="kPower">--</span><span class="unit">W</span></div>
+      <div class="kpi-foot" id="kPowerFoot" data-i18n="kpi.power.waiting"></div>
+      <canvas class="spark" id="spkPower" height="34"></canvas>
+    </article>
+    <article class="kpi">
+      <div class="kpi-label" data-i18n="kpi.devs"></div>
+      <div class="kpi-val"><span class="num" id="kDevs">--</span><span class="unit" data-i18n="unit.devices"></span></div>
+      <div class="kpi-foot" id="kDevsFoot">—</div>
+      <div class="kpi-dots" id="kDevDots"></div>
+    </article>
+    <article class="kpi">
+      <div class="kpi-label" data-i18n="kpi.link"></div>
+      <div class="kpi-val"><span class="num" id="kLink">--</span><span class="unit" id="kLinkUnit">Gbps</span></div>
+      <div class="kpi-foot" id="kLinkFoot">—</div>
+      <div class="kpi-lanes" id="kLanes"></div>
+    </article>
+    <article class="kpi">
+      <div class="kpi-label" data-i18n="kpi.bat"></div>
+      <div class="kpi-val"><span class="num" id="kBat">--</span><span class="unit" data-i18n="unit.pct"></span></div>
+      <div class="kpi-foot" id="kBatFoot">—</div>
+      <div class="batbar"><i id="kBatBar" style="width:0%"></i></div>
+    </article>
+  </section>
+
+  <section class="panel link" id="linkPanel">
+    <div class="link-grid">
+      <div class="node host">
+        <div class="node-head">
+          <span class="ico"><svg><use href="#ic-laptop"/></svg></span>
+          <div>
+            <div class="node-title" id="hostName">—</div>
+            <div class="node-sub" id="hostSub">—</div>
+          </div>
+        </div>
+        <div class="host-meta" id="hostMeta"></div>
+      </div>
+
+      <div class="cable">
+        <div class="cable-label" id="cableLabel" data-i18n="link.cable"></div>
+        <div class="cable-line"><i class="flow"></i></div>
+        <div class="cable-sub" id="cableSub">—</div>
+      </div>
+
+      <div class="node dock" id="dockNode">
+        <div class="node-head">
+          <span class="ico dockico"><svg><use href="#ic-dock"/></svg></span>
+          <div>
+            <div class="node-title" id="dockName">—</div>
+            <div class="node-sub" id="dockSub">—</div>
+          </div>
+        </div>
+        <div class="chan" id="dockChans"></div>
+      </div>
+
+      <div class="ports">
+        <div class="ports-head">
+          <span data-i18n="link.ports"></span>
+          <span class="ports-count" id="portCount">—</span>
+        </div>
+        <div class="port-flow" id="portFlow"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel p-power">
+    <div class="panel-head">
+      <div class="ph-left">
+        <h2 data-i18n="power.title"></h2>
+        <span class="tag est" id="powerNoteTag">—</span>
+      </div>
+      <div class="ph-right legend" id="powerLegend">
+        <span><i class="sw sw-total"></i><em data-i18n="power.legend.total"></em></span>
+        <span><i class="sw sw-cpu"></i><em data-i18n="power.legend.cpu"></em></span>
+        <span class="sw-gpu-wrap"><i class="sw sw-gpu"></i><em data-i18n="power.legend.gpu"></em></span>
+        <span class="win" id="winLabel">—</span>
+      </div>
+    </div>
+    <div class="chart-wrap">
+      <canvas id="powerChart"></canvas>
+      <div class="tip" id="powerTip"></div>
+    </div>
+    <div class="chart-foot">
+      <div class="cf-item"><span data-i18n="power.peak"></span><b id="pPeak">—</b></div>
+      <div class="cf-item"><span data-i18n="power.avg"></span><b id="pAvg">—</b></div>
+      <div class="cf-item"><span data-i18n="power.energy"></span><b id="pEnergy">—</b></div>
+      <div class="cf-note" id="powerNote">—</div>
+    </div>
+  </section>
+
+  <section class="panel p-load">
+    <div class="panel-head">
+      <div class="ph-left"><h2 data-i18n="load.title"></h2></div>
+      <div class="ph-right"><span class="muted" id="loadSrc">—</span></div>
+    </div>
+    <div class="loads">
+      <div class="load">
+        <div class="load-top"><span data-i18n="load.cpu"></span><b id="lCpu">—</b></div>
+        <div class="track"><i id="bCpu"></i></div>
+        <div class="load-sub" id="lCpuSub">—</div>
+      </div>
+      <div class="load">
+        <div class="load-top"><span data-i18n="load.gpu"></span><b id="lGpu">—</b></div>
+        <div class="track"><i id="bGpu" class="violet"></i></div>
+        <div class="load-sub" id="lGpuSub">—</div>
+      </div>
+      <div class="load">
+        <div class="load-top"><span data-i18n="load.mem"></span><b id="lMem">—</b></div>
+        <div class="track"><i id="bMem" class="blue"></i></div>
+        <div class="load-sub" id="lMemSub">—</div>
+      </div>
+      <div class="load">
+        <div class="load-top"><span data-i18n="load.disk"></span><b id="lDisk">—</b></div>
+        <div class="track"><i id="bDisk" class="amber"></i></div>
+        <div class="load-sub" id="lDiskSub">—</div>
+      </div>
+      <div class="load">
+        <div class="load-top"><span data-i18n="load.net"></span><b id="lNet">—</b></div>
+        <div class="track"><i id="bNet" class="cyan"></i></div>
+        <div class="load-sub" id="lNetSub">—</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="power-cells" id="powerCells"></div>
+  </section>
+
+  <section class="panel p-dev">
+    <div class="panel-head">
+      <div class="ph-left"><h2 data-i18n="dev.title"></h2><span class="tag" id="devTag">—</span></div>
+      <div class="ph-right"><span class="muted" data-i18n="dev.note"></span></div>
+    </div>
+    <div class="table-scroll">
+      <table class="dev-table">
+        <thead>
+          <tr>
+            <th class="c-name" data-i18n="th.name"></th>
+            <th class="c-type" data-i18n="th.type"></th>
+            <th class="c-port" data-i18n="th.port"></th>
+            <th class="c-lane" data-i18n="th.lane"></th>
+            <th class="c-vid" data-i18n="th.vid"></th>
+            <th class="c-act" data-i18n="th.act"></th>
+            <th class="c-st" data-i18n="th.st"></th>
+          </tr>
+        </thead>
+        <tbody id="devBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel p-events">
+    <div class="panel-head">
+      <div class="ph-left"><h2 data-i18n="ev.title"></h2></div>
+      <div class="ph-right"><span class="muted" id="evCount">—</span></div>
+    </div>
+    <div class="events" id="events"></div>
+    <div class="ev-foot">
+      <div><span data-i18n="ev.uptime"></span><b id="evUptime">—</b></div>
+      <div><span data-i18n="ev.tree"></span><b id="evTree">—</b></div>
+      <div><span data-i18n="ev.sample"></span><b>1 Hz</b></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div id="footSampling">—</div>
+    <div id="footTruth" data-i18n="foot.truth"></div>
+  </footer>
+</main>
+
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

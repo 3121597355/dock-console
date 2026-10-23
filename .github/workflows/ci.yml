@@ -1,0 +1,49 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: node ${{ matrix.node }} · ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        node: ['18', '20', '22']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      # there are no dependencies, so no install step — `npm test` runs the
+      # parser and model suites, `smoke` boots the real server in demo mode
+      - name: unit tests
+        run: node test/run.js
+
+      - name: end-to-end smoke test
+        run: node test/smoke.js
+        env:
+          SMOKE_PORT: '8899'
+
+  package:
+    name: package contents
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: verify the published tarball contains the front-end
+        run: |
+          npm pack --dry-run 2>&1 | tee /tmp/pack.txt
+          grep -q "public/index.html" /tmp/pack.txt
+          grep -q "public/i18n.js" /tmp/pack.txt
+          grep -q "src/platform/linux.js" /tmp/pack.txt
+          grep -q "src/platform/darwin.js" /tmp/pack.txt

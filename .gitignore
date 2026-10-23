@@ -1,0 +1,17 @@
+# runtime artefacts
+data/
+config.json
+*.log
+node_modules/
+
+# editor / OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# local scratch
+_ep*/
+_shot*.png
+_zoom*.png
+_*.json

@@ -1,0 +1,21 @@
+{
+  "port": 8787,
+  "host": "127.0.0.1",
+  "open": true,
+
+  "inventoryIntervalMs": 2000,
+  "historySeconds": 2400,
+
+  "dock": {
+    "name": null,
+    "vendorId": null
+  },
+
+  "power": {
+    "enabled": true,
+    "baseW": 8,
+    "cpuIdleW": 4,
+    "cpuMaxW": 45,
+    "diskWPerMBs": 0.6
+  }
+}

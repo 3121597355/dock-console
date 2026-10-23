@@ -1,0 +1,52 @@
+{
+  "name": "dock-console",
+  "version": "1.1.0",
+  "description": "Realtime browser dashboard for a USB-C dock or hub: port topology, negotiated link speed, hot-plug events and real power telemetry. Windows, macOS and Linux. Zero dependencies.",
+  "keywords": [
+    "usb",
+    "usb-c",
+    "dock",
+    "docking-station",
+    "hub",
+    "monitor",
+    "dashboard",
+    "hardware",
+    "windows",
+    "macos",
+    "linux",
+    "nvidia-smi",
+    "rapl",
+    "power"
+  ],
+  "license": "MIT",
+  "author": "winter solstice",
+  "main": "src/index.js",
+  "bin": {
+    "dock-console": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "demo": "node src/index.js --demo",
+    "test": "node test/run.js",
+    "smoke": "node test/smoke.js",
+    "prepublishOnly": "npm test && node test/smoke.js"
+  },
+  "homepage": "https://github.com/3121597355/dock-console#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3121597355/dock-console.git"
+  },
+  "bugs": {
+    "url": "https://github.com/3121597355/dock-console/issues"
+  },
+  "files": [
+    "src",
+    "public",
+    "LICENSE",
+    "README.md",
+    "README.zh-CN.md"
+  ],
+  "engines": {
+    "node": ">=16"
+  }
+}
